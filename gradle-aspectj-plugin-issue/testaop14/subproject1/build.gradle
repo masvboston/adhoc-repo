@@ -1,0 +1,10 @@
+apply plugin: 'aspectj'
+
+compileAspect{
+	xlint = "warning"
+}
+
+dependencies{
+	compile project(":aoplib")
+	aspectpath project(":aoplib")
+}

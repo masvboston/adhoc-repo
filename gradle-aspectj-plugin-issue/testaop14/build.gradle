@@ -1,0 +1,43 @@
+
+buildscript{
+	repositories {
+
+		mavenCentral()
+
+		repositories {
+			maven { url "https://maven.eveoh.nl/content/repositories/releases" }
+		}
+
+		dependencies{ classpath "nl.eveoh:gradle-aspectj:1.4" }
+	}
+}
+
+
+allprojects{
+
+
+	// Version of AspectJ to use for AOP operations.
+	ext.aspectjVersion = '1.7.4'
+
+	repositories { mavenCentral() }
+
+	apply plugin: 'java'
+
+	sourceCompatibility = 1.7
+	targetCompatibility = 1.7
+
+	version = '1.0'
+}
+
+
+
+subprojects{
+	
+	dependencies {
+		compile "org.apache.commons:commons-collections4:4.0"
+		testCompile "junit:junit:4.11"
+	}
+
+}
+
+
