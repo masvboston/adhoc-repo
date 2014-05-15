@@ -1,0 +1,66 @@
+buildscript {
+
+    repositories {
+        maven { url "https://maven.eveoh.nl/content/repositories/releases" }
+    }
+
+    dependencies { classpath "nl.eveoh:gradle-aspectj:1.5" }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+
+// Version of AspectJ to use for AOP operations.
+project.ext.aspectjVersion = '1.7.4'
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'aspectj'
+
+/*
+ * Configurations for the AspectJ plugin.
+ */
+compileAspect {
+
+    // Have the AJC warnings show in the standard output.
+    xlint = "warning"
+
+    // Set the upper memory limit for AJC.
+    maxmem = "1024m"
+}
+
+/*
+ * Configurations for the AspectJ plugin.
+ */
+compileTestAspect {
+
+    // Have the AJC warnings show in the standard output.
+    xlint = "warning"
+
+    // Set the upper memory limit for AJC.
+    maxmem = "1024m"
+}
+
+
+
+sourceCompatibility = 1.7
+version = '1.0'
+
+
+dependencies {
+
+
+
+
+    compile "org.aspectj:aspectjrt:${aspectjVersion}"
+
+
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+
+}
+
